@@ -12,8 +12,8 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,1) 1.5px,transparent 2.5px),radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.6) 1px,transparent 1.8px),radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);background-size:105px 105px,165px 165px,245px 245px,340px 340px;background-position:10% 10%,40% 35%,80% 70%,22% 72%;opacity:.82;pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 5px rgba(190,220,255,.7));animation:starDrift 80s linear infinite,starTwinkle 5s ease-in-out infinite alternate;z-index:-1;}
 @keyframes starDrift{from{transform:translate(0,0);}to{transform:translate(-50px,50px);}}
 @keyframes starTwinkle{from{opacity:.55;filter:drop-shadow(0 0 2px rgba(190,220,255,.35));}to{opacity:1;filter:drop-shadow(0 0 8px rgba(210,230,255,.95));}}
-.screen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;}
-.hidden{display:none;}
+.screen{width:100%;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.hidden{display:none !important;}
 #brandLogo{position:fixed;top:18px;left:18px;z-index:12;width:172px;display:flex;align-items:center;gap:10px;pointer-events:none;}
 #brandLogo img{width:64px;height:auto;flex-shrink:0;object-fit:contain;border-radius:8px;}
 #brandLogo .brand-text{display:flex;flex-direction:column;}
@@ -50,7 +50,7 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
 .result-card.success{background:rgba(46,70,143,.92);}
 .result-card.fail{background:rgba(92,32,36,.92);}
 .result-key{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.08);color:#b9d7ff;font-weight:700;letter-spacing:.08em;animation:pop 0.7s ease both;}
-#finalScreen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(4,8,22,.88);backdrop-filter:blur(12px);z-index:10;}
+#finalScreen{position:fixed;inset:0;padding:24px;background:rgba(4,8,22,.88);backdrop-filter:blur(12px);z-index:10;}#finalScreen.hidden{display:none !important;}#finalScreen:not(.hidden){display:flex;align-items:center;justify-content:center;}
 .final-card{width:min(100%,720px);padding:36px;border-radius:32px;border:1px solid rgba(120,110,255,.2);background:rgba(8,13,32,.98);box-shadow:0 35px 90px rgba(43,44,90,.28);text-align:center;}
 .final-card h2{margin:0 0 12px;font-size:2.4rem;color:#f5f7ff;}
 .final-card p{margin:0 0 22px;font-size:1.05rem;line-height:1.8;color:#d0d6ff;}
@@ -61,7 +61,7 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:11;opacity:0;transition:opacity .25s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.06);opacity:1}100%{transform:scale(1);}}
-@media (max-width:600px){body{overflow-x:hidden;overflow-y:auto;align-items:flex-start}.screen{position:relative;min-height:100svh;padding:14px 10px}.game-shell{padding:12px;gap:14px}.hud{gap:10px}.timer-ring{width:88px;height:88px}.card{min-height:0;padding:22px 18px;border-radius:22px}.card h1{font-size:1.55rem;letter-spacing:.04em}.card p{font-size:.98rem;line-height:1.55}.answer-btn{padding:15px 14px;font-size:.96rem}.final-card{padding:26px 18px;border-radius:24px}.final-card h2{font-size:1.85rem}.final-card p{font-size:1rem;line-height:1.6}#brandLogo{top:10px;left:10px;width:auto}#brandLogo img{width:42px}#brandLogo .brand-text{display:none}}
+@media (max-width:600px){body{display:block;overflow-x:hidden;overflow-y:auto;align-items:stretch;justify-content:flex-start}.screen{position:relative;inset:auto;min-height:100svh;padding:14px 10px}.game-shell{padding:12px;gap:14px}.hud{gap:10px}.timer-ring{width:88px;height:88px}.card{min-height:0;padding:22px 18px;border-radius:22px}.card h1{font-size:1.55rem;letter-spacing:.04em}.card p{font-size:.98rem;line-height:1.55}.answer-btn{padding:15px 14px;font-size:.96rem}.final-card{padding:26px 18px;border-radius:24px}.final-card h2{font-size:1.85rem}.final-card p{font-size:1rem;line-height:1.6}#brandLogo{top:10px;left:10px;width:auto}#brandLogo img{width:42px}#brandLogo .brand-text{display:none}}
 </style>
 </head>
 <body>
@@ -211,7 +211,7 @@ function handleAnswer(index,button){
  endRun(true,`✅ Correto!`,true);
  } else {
  button.classList.add("wrong");
- endRun(false,`❌ Resposta incorreta.`,true);
+ endRun(false,`❌ Resposta incorreta.`,false);
  }
 }
 function playTone(frequency,duration,type="sine"){ 
