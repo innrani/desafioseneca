@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Desafio Científico</title>
+<style>
+:root{color-scheme: dark;}
+*{box-sizing:border-box;}
+body{margin:0;min-height:100vh;font-family:'Segoe UI',Inter,Arial,sans-serif;background:#020316;color:#ffffff;display:flex;padding:20px;position:relative;overflow-x:hidden;overflow-y:auto;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 10%,rgba(135,121,255,.22),transparent 16%),radial-gradient(circle at 80% 18%,rgba(72,207,255,.18),transparent 14%),linear-gradient(180deg,#020316 0%,#050814 100%);pointer-events:none;z-index:-2;}
+body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,1) 1.5px,transparent 2.5px),radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.6) 1px,transparent 1.8px),radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);background-size:90px 90px,150px 150px,230px 230px,330px 330px;background-position:10% 10%,35% 30%,75% 80%,20% 65%;opacity:.78;pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 5px rgba(190,220,255,.7));animation:starDrift 80s linear infinite,starTwinkle 5s ease-in-out infinite alternate;}
+@keyframes starDrift{from{transform:translate(0,0);}to{transform:translate(-50px,50px);}}
+@keyframes starTwinkle{from{opacity:.5;filter:drop-shadow(0 0 2px rgba(190,220,255,.35));}to{opacity:1;filter:drop-shadow(0 0 8px rgba(210,230,255,.95));}}
+.intro-logo{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.intro-logo img{width:64px;height:auto;flex-shrink:0;border-radius:8px;}
+.intro-logo svg{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 6px 18px rgba(110,86,255,.35));}
+.intro-logo span{font-size:1rem;font-weight:700;color:#cfcfff;letter-spacing:.08em;text-transform:uppercase;}
+.main-card{width:min(100%,820px);margin:auto;padding:32px 30px;position:relative;border-radius:32px;background:rgba(10,18,38,.64);border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 80px rgba(0,0,0,.35);backdrop-filter:blur(18px);overflow:hidden;}
+.main-card::before{content:"";position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,#7f7dff33,transparent 58%);pointer-events:none;}
+.main-card::after{content:"";position:absolute;bottom:-34px;left:-28px;width:128px;height:128px;border:1px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 40px rgba(143,131,255,.16);pointer-events:none;}
+.main-card h1{margin:0 0 18px;font-size:clamp(2rem,5vw,3rem);line-height:1.05;color:#f4f3ff;}
+.intro-logo{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.intro-logo svg{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 6px 18px rgba(110,86,255,.35));}
+.intro-logo span{font-size:1rem;font-weight:700;color:#cfcfff;letter-spacing:.08em;text-transform:uppercase;}
+.main-card p{margin:0 0 18px;font-size:1rem;line-height:1.75;color:#ffffff;}
+.main-card strong{color:#fff;}
+.main-card h3{margin:28px 0 14px;font-size:1.1rem;color:#b8b8ff;}
+.welcome-list{margin:0 0 18px;padding-left:1.35rem;color:#ffffff;}
+.welcome-list li{margin:10px 0;}
+.welcome-list li::marker{color:#8f83ff;}
+.story-card{padding:24px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(0,0,0,.18);margin-top:24px;}
+.story-card p{margin:0;font-size:1rem;line-height:1.8;color:#ffffff;}
+@media (max-width:720px){
+ body{padding:16px;}
+ .main-card{padding:26px 20px;border-radius:28px;}
+}
+</style>
+</head>
+<body>
+<article class="main-card">
+ <div class="intro-logo">
+   <img src="logo.png" alt="Sêneca" />
+ </div>
+ <h1>🔬 Bem-vindo ao Desafio Científico!</h1>
+ <p>Você está prestes a colocar seus conhecimentos à prova.</p>
+ <p>Na Feira de Ciências, cada estande esconde um QR Code com um desafio diferente. Explore, encontre e desbloqueie os próximos passos!</p>
+ <p>Ao acertar uma pergunta, você receberá uma <strong>Chave Científica</strong>. Colete todas elas para liberar o <strong>Desafio Final</strong> e ganhar um brinde.</p>
+ <p>⏱️ Você terá apenas <strong>15 segundos</strong> para responder cada desafio.</p>
+ <h3>Regras</h3>
+ <ul class="welcome-list">
+   <li>Procure pelas placas e QR Codes do evento.</li>
+   <li>Questões rápidas e diretas: só uma tentativa por desafio.</li>
+   <li>Não use internet ou ajuda externa.</li>
+   <li>Divirta-se e compartilhe o espírito da ciência!.</li>
+ </ul>
+ <div class="story-card">
+   <p>Descubra cada QR Code nos estandes, colecione todas as chaves e mostre que você é um verdadeiro explorador da ciência.</p>
+   <p style="margin-top:14px;text-align:center;font-size:1rem;color:#eff4ff;font-weight:700;line-height:1.6;">Comece sua investigação pela Módulo 3 (anexo novo do ensino médio) Química 1ª, Química 2 e diga a palavra <strong>“FÓTON”</strong> no Física 1 para receber sua primeira missão.</p>
+ </div>
+</article>
+</body>
+</html>
