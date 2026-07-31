@@ -240,11 +240,11 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.innerHTML = "Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>.";
+ finalMessage.innerHTML = "Missão concluída! Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>. Você chegou até o final! Passe no marketing para pegar seu docinho. Obrigada por participar! Palavra-chave: <strong>higgs</strong>.";
  } else if(success){
- finalMessage.innerHTML = "Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>. Se vc chegou ate aqui vc tem direito a um docinho! procure o marketing :) obrigada por participar!";
+ finalMessage.innerHTML = "Missão concluída! Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>. Você chegou até o final! Passe no marketing para pegar seu docinho. Obrigada por participar! Palavra-chave: <strong>higgs</strong>.";
  } else {
- finalMessage.innerHTML = "Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>.";
+ finalMessage.innerHTML = "Missão não foi concluída, mas vá para essas salas: Desafio 6: 3º ano, 4º ano e <strong>5º ano</strong>. A feira tem muitas coisas legais para ver, aproveite!";
  }
  if(success && nextKey){
  finalKeyword.textContent=nextLabel;

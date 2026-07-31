@@ -240,11 +240,11 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.innerHTML = "Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>.";
+ finalMessage.innerHTML = "Missão concluída! Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>quasar</strong>.";
  } else if(success){
- finalMessage.innerHTML = "Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>.";
+ finalMessage.innerHTML = "Missão concluída! Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>quasar</strong>.";
  } else {
- finalMessage.innerHTML = "Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>.";
+ finalMessage.innerHTML = "Missão não foi concluída, mas vá para essas salas: Desafio 4: 7º B, 7º C, 8º A e <strong>8º B</strong>. O QR do próximo desafio está em <strong>8º B</strong>. A feira tem muitas coisas legais para ver, aproveite!";
  }
  if(success && nextKey){
  finalKeyword.textContent=nextLabel;

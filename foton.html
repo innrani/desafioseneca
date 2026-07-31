@@ -240,11 +240,11 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
+ finalMessage.innerHTML = "Missão concluída! Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>foton</strong>.";
  } else if(success){
- finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
+ finalMessage.innerHTML = "Missão concluída! Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>foton</strong>.";
  } else {
- finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
+ finalMessage.innerHTML = "Missão não foi concluída, mas vá para essas salas: Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>. A feira tem muitas coisas legais para ver, aproveite!";
  }
  if(success && nextKey){
  finalKeyword.textContent=nextLabel;
