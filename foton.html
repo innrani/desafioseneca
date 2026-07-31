@@ -237,7 +237,7 @@ function playFail(){
  setTimeout(()=>playTone(120,0.22,"sawtooth"),120);
 }
 function endRun(success,message,showAnswer){
- resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong>${showAnswer && !success ? `<div style="margin-top:12px;color:#d7d8ff;">Resposta correta: <span style="font-weight:700;color:#fff;">${d.a[d.c]}</span></div>` : ""}</div>`;
+ resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
  finalMessage.textContent = `✅ Correto! A palavra-chave é ${nextKey}. Você pode seguir para a próxima sala e continuar sua jornada científica.`;
