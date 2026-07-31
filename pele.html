@@ -5,24 +5,141 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Desafio Modelo 2</title>
 <style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;display:grid;place-items:center;font-family:Inter,Arial,sans-serif;color:#e8ecff;background:#050814;position:relative;overflow:hidden}body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(92,100,255,.16),transparent 22%),radial-gradient(circle at 80% 18%,rgba(53,198,255,.12),transparent 18%),linear-gradient(180deg,#050814,#06091d);z-index:-2}body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,#fff 1.5px,transparent 2.5px),radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);background-size:105px 105px,165px 165px,340px 340px;opacity:.82;filter:drop-shadow(0 0 5px rgba(190,220,255,.7));z-index:-1;animation:twinkle 5s ease-in-out infinite alternate}@keyframes twinkle{from{opacity:.55}to{opacity:1}}.card{width:min(100%,720px);padding:40px;border-radius:32px;border:1px solid rgba(123,114,255,.22);background:rgba(10,16,38,.94);box-shadow:0 30px 120px rgba(68,53,179,.2)}h1{margin:0 0 12px;color:#b6abff;font-size:clamp(2rem,5vw,3rem)}p{line-height:1.7;color:#d7daff}.timer{display:inline-flex;min-width:52px;justify-content:center;margin:0 0 22px;padding:10px 14px;border-radius:999px;background:rgba(143,131,255,.2);font-size:1.2rem;font-weight:800}.answers{display:grid;gap:12px;margin-top:24px}.answer{padding:16px;border:0;border-radius:16px;background:rgba(31,40,75,.9);color:#edf0ff;text-align:left;font:inherit;cursor:pointer}.answer:hover{background:rgba(56,78,150,.95)}.result{margin-top:22px;padding:16px;border-radius:16px;line-height:1.6}.success{background:rgba(46,70,143,.92)}.fail{background:rgba(92,32,36,.92)}.hidden{display:none}@media(max-width:600px){body{padding:14px;place-items:start center;overflow-y:auto}.card{padding:24px 18px;border-radius:24px;margin:auto 0}h1{font-size:1.75rem}.answer{padding:15px 14px;font-size:.96rem}.result{font-size:.95rem}}
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  padding:24px;
+  display:grid;
+  place-items:center;
+  font-family:Inter,Arial,sans-serif;
+  color:#e8ecff;
+  background:#050814;
+  position:relative;
+  overflow-x:hidden;
+  overflow-y:auto;
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(92,100,255,.16),transparent 22%),
+    radial-gradient(circle at 80% 18%,rgba(53,198,255,.12),transparent 18%),
+    linear-gradient(180deg,#050814,#06091d);
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle,#fff 1.5px,transparent 2.5px),
+    radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),
+    radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);
+  background-size:105px 105px,165px 165px,340px 340px;
+  opacity:.82;
+  filter:drop-shadow(0 0 5px rgba(190,220,255,.7));
+  z-index:-1;
+  animation:twinkle 5s ease-in-out infinite alternate;
+}
+@keyframes twinkle{from{opacity:.55}to{opacity:1}}
+.card{
+  width:min(100%,720px);
+  padding:40px;
+  border-radius:32px;
+  border:1px solid rgba(123,114,255,.22);
+  background:rgba(10,16,38,.94);
+  box-shadow:0 30px 120px rgba(68,53,179,.2);
+}
+h1{margin:0 0 12px;color:#b6abff;font-size:clamp(2rem,5vw,3rem)}
+p{line-height:1.7;color:#d7daff}
+.timer{
+  display:inline-flex;
+  min-width:52px;
+  justify-content:center;
+  margin:0 0 22px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(143,131,255,.2);
+  font-size:1.2rem;
+  font-weight:800;
+}
+.answers{display:grid;gap:12px;margin-top:24px}
+.answer{
+  padding:16px;
+  border:0;
+  border-radius:16px;
+  background:rgba(31,40,75,.9);
+  color:#edf0ff;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+}
+.answer:hover{background:rgba(56,78,150,.95)}
+.result{margin-top:22px;padding:16px;border-radius:16px;line-height:1.6}
+.success{background:rgba(46,70,143,.92)}
+.fail{background:rgba(92,32,36,.92)}
+.hidden{display:none}
+@media(max-width:600px){
+  body{padding:14px;place-items:start center;overflow-y:auto}
+  .card{padding:24px 18px;border-radius:24px;margin:auto 0}
+  h1{font-size:1.75rem}
+  .answer{padding:15px 14px;font-size:.95rem}
+}
 </style>
 </head>
 <body>
 <main class="card">
-<h1>Desafio Modelo 2</h1>
-<div class="timer" id="timer">15</div>
-<p>Qual é o maior órgão do corpo humano?</p>
-<div class="answers" id="answers">
-<button class="answer" data-correct="false">A) Fígado</button>
-<button class="answer" data-correct="true">B) Pele</button>
-<button class="answer" data-correct="false">C) Pulmão</button>
-<button class="answer" data-correct="false">D) Intestino</button>
-</div>
-<div class="result hidden" id="result"></div>
+  <h1>Desafio Modelo 2</h1>
+  <div class="timer" id="timer">15</div>
+  <p>Qual e o maior orgao do corpo humano?</p>
+  <div class="answers" id="answers">
+    <button class="answer" data-correct="false">A) Figado</button>
+    <button class="answer" data-correct="true">B) Pele</button>
+    <button class="answer" data-correct="false">C) Pulmao</button>
+    <button class="answer" data-correct="false">D) Intestino</button>
+  </div>
+  <div class="result hidden" id="result"></div>
 </main>
 <script>
-const timer=document.getElementById('timer'),answers=document.getElementById('answers'),result=document.getElementById('result');let seconds=15,locked=false;const clock=setInterval(()=>{if(locked)return;seconds--;timer.textContent=seconds;if(seconds<=0)finish(false,'⏰ Tempo esgotado! Não foi dessa vez, mas visite as salas 8º B, 9º ano e 2º ano para continuar sua investigação.');},1000);function finish(success,message){if(locked)return;locked=true;clearInterval(clock);answers.querySelectorAll('button').forEach(button=>button.disabled=true);result.textContent=message;result.className=`result ${success?'success':'fail'}`;}answers.addEventListener('click',event=>{const button=event.target.closest('button');if(!button||locked)return;finish(button.dataset.correct==='true',button.dataset.correct==='true'?'✅ Correto! Visite a próxima sala: HIGGS. Para desbloquear o próximo desafio, fale a palavra HIGGS.':'❌ Não foi dessa vez, mas visite as salas 8º B, 9º ano e 2º ano para continuar sua investigação.');});
+const timer=document.getElementById('timer');
+const answers=document.getElementById('answers');
+const result=document.getElementById('result');
+let seconds=15;
+let locked=false;
+
+const clock=setInterval(()=>{
+  if(locked) return;
+  seconds--;
+  timer.textContent=seconds;
+  if(seconds<=0){
+    finish(false,'Tempo esgotado! Nao foi dessa vez, mas visite as salas 8o B, 9o ano e 2o ano para continuar sua investigacao.');
+  }
+},1000);
+
+function finish(success,message){
+  if(locked) return;
+  locked=true;
+  clearInterval(clock);
+  answers.querySelectorAll('button').forEach(button=>button.disabled=true);
+  result.textContent=message;
+  result.className=`result ${success?'success':'fail'}`;
+}
+
+answers.addEventListener('click',event=>{
+  const button=event.target.closest('button');
+  if(!button||locked) return;
+  finish(
+    button.dataset.correct==='true',
+    button.dataset.correct==='true'
+      ? 'Correto! Visite a proxima sala: HIGGS. Para desbloquear o proximo desafio, fale a palavra HIGGS.'
+      : 'Nao foi dessa vez, mas visite as salas 8o B, 9o ano e 2o ano para continuar sua investigacao.'
+  );
+});
 </script>
 </body>
 </html>

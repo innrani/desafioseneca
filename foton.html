@@ -7,7 +7,7 @@
 <style>
 :root{color-scheme: dark;}
 *{box-sizing:border-box;}
-body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;background:#050814;color:#e8ecff;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;background:#050814;color:#e8ecff;display:flex;align-items:center;justify-content:center;overflow-x:hidden;overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch;position:relative;}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(92,100,255,.16),transparent 22%),radial-gradient(circle at 80% 18%,rgba(53,198,255,.12),transparent 18%),linear-gradient(180deg,#050814 0%,#06091d 100%);pointer-events:none;z-index:-2;}
 body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,1) 1.5px,transparent 2.5px),radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.6) 1px,transparent 1.8px),radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);background-size:105px 105px,165px 165px,245px 245px,340px 340px;background-position:10% 10%,40% 35%,80% 70%,22% 72%;opacity:.82;pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 5px rgba(190,220,255,.7));animation:starDrift 80s linear infinite,starTwinkle 5s ease-in-out infinite alternate;z-index:-1;}
 @keyframes starDrift{from{transform:translate(0,0);}to{transform:translate(-50px,50px);}}
@@ -252,11 +252,15 @@ function endRun(success,message,showAnswer){
  } else {
  finalKeyword.classList.add("hidden");
  }
- if(nextEntry){
- nextBtn.textContent = success ? "Ir para o próximo" : "Continuar";
+ if(success){
+ nextBtn.style.display = "none";
+ } else if(nextEntry){
+ nextBtn.style.display = "inline-flex";
+ nextBtn.textContent = "Continuar";
  nextBtn.onclick = ()=>{ location.href = nextEntry.file; };
  } else {
- nextBtn.textContent = success ? "Voltar ao início" : "Voltar ao início";
+ nextBtn.style.display = "inline-flex";
+ nextBtn.textContent = "Voltar ao início";
  nextBtn.onclick = ()=>{ location.href = `atomo.html`; };
  }
  finalScreen.classList.remove("hidden");
