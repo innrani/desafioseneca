@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Desafio Sêneca</title>
+<title>Desafio SÃªneca</title>
 <style>
 :root{color-scheme: dark;}
 *{box-sizing:border-box;}
@@ -14,11 +14,8 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
 @keyframes starTwinkle{from{opacity:.55;filter:drop-shadow(0 0 2px rgba(190,220,255,.35));}to{opacity:1;filter:drop-shadow(0 0 8px rgba(210,230,255,.95));}}
 .screen{width:100%;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;}
 .hidden{display:none !important;}
-#brandLogo{position:fixed;top:18px;left:18px;z-index:12;width:172px;display:flex;align-items:center;gap:10px;pointer-events:none;}
-#brandLogo img{width:42px;height:42px;flex-shrink:0;object-fit:contain;border-radius:8px;}
-#brandLogo .brand-text{display:flex;flex-direction:column;}
-#brandLogo .brand-title{font-size:.95rem;font-weight:800;line-height:1.1;color:#fff;text-transform:uppercase;letter-spacing:.02em;}
-#brandLogo .brand-sub{font-size:.7rem;color:#adb7ff;letter-spacing:.08em;text-transform:uppercase;}
+#brandLogo{position:fixed;top:18px;left:18px;z-index:12;width:auto;display:flex;align-items:center;pointer-events:none;}
+#brandLogo img{width:92px;height:auto;flex-shrink:0;object-fit:contain;border-radius:8px;}
 .hero{width:min(100%,720px);padding:40px;border-radius:32px;border:1px solid rgba(123,114,255,.18);background:rgba(10,16,38,.95);box-shadow:0 30px 120px rgba(68,53,179,.18);backdrop-filter:blur(12px);}
 .hero h1{font-size:clamp(2.4rem,4vw,3.6rem);margin:0 0 16px;letter-spacing:.04em;text-transform:uppercase;color:#b6abff;}
 .hero p{margin:0 0 24px;font-size:1.05rem;line-height:1.75;color:#cbd0ff;}
@@ -61,16 +58,12 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:11;opacity:0;transition:opacity .25s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.06);opacity:1}100%{transform:scale(1);}}
-@media (max-width:600px){body{display:block;overflow-x:hidden;overflow-y:auto;align-items:stretch;justify-content:flex-start}.screen{position:relative;inset:auto;min-height:100svh;padding:14px 10px}.game-shell{padding:12px;gap:14px}.hud{gap:10px}.timer-ring{width:88px;height:88px}.card{min-height:0;padding:22px 18px;border-radius:22px}.card h1{font-size:1.55rem;letter-spacing:.04em}.card p{font-size:.98rem;line-height:1.55}.answer-btn{padding:15px 14px;font-size:.96rem}.final-card{padding:26px 18px;border-radius:24px}.final-card h2{font-size:1.85rem}.final-card p{font-size:1rem;line-height:1.6}#brandLogo{top:10px;left:10px;width:auto}#brandLogo img{width:42px}#brandLogo .brand-text{display:none}}
+@media (max-width:600px){body{display:block;overflow-x:hidden;overflow-y:auto;align-items:stretch;justify-content:flex-start}.screen{position:relative;inset:auto;min-height:100svh;padding:14px 10px}.game-shell{padding:12px;gap:14px}.hud{gap:10px}.timer-ring{width:88px;height:88px}.card{min-height:0;padding:22px 18px;border-radius:22px}.card h1{font-size:1.55rem;letter-spacing:.04em}.card p{font-size:.98rem;line-height:1.55}.answer-btn{padding:15px 14px;font-size:.96rem}.final-card{padding:26px 18px;border-radius:24px}.final-card h2{font-size:1.85rem}.final-card p{font-size:1rem;line-height:1.6}#brandLogo{top:10px;left:10px;width:auto}#brandLogo img{width:62px}}
 </style>
 </head>
 <body>
 <div id="brandLogo">
- <img src="logo.png" alt="Sêneca">
- <div class="brand-text">
-   <span class="brand-title">Sêneca</span>
-   <span class="brand-sub">Colégio</span>
- </div>
+ <img src="logo.png" alt="SÃªneca">
 </div>
 <div class="screen" id="gameScreen">
  <div class="game-shell">
@@ -99,41 +92,20 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
  <p id="finalMessage"></p>
  <div id="finalKeyword" class="final-keyword hidden"></div>
  <div class="final-actions">
- <button class="action-btn" id="nextBtn">Próximo</button>
+ <button class="action-btn" id="nextBtn">PrÃ³ximo</button>
  </div>
  </div>
 </div>
 <canvas id="confetti"></canvas>
 <script>
-const db={
-"atomo":{title:"QR 1",key:"ÁTOMO",q:"Você está na Lua. Solta um martelo e uma pena ao mesmo tempo. Qual chega primeiro ao chão?",a:["Martelo","Pena","Os dois juntos","Depende do vento"],c:2},
-"foton":{title:"QR 2",key:"FÓTON",q:"Se o Sol desaparecesse instantaneamente, quanto tempo a Terra demoraria para perceber?",a:["Imediatamente","1 segundo","8 minutos","1 hora"],c:2},
-"genoma":{title:"Desafio Genoma",key:"GENOMA",q:"O que é o genoma de um organismo?",a:["O conjunto completo do seu material genético.","Apenas os genes responsáveis pela cor dos olhos.","As proteínas produzidas pelas células.","O núcleo de todas as células."],c:0},
-"quasar":{title:"QR 4",key:"QUASAR",q:"O diamante e o grafite são feitos principalmente de:",a:["Ferro","Carbono","Silício","Quartzo"],c:1},
-"cerebro":{title:"Desafio Cérebro",key:"CÉREBRO",q:"Qual órgão consome aproximadamente 20% da energia do corpo humano, mesmo representando apenas cerca de 2% do peso corporal?",a:["Fígado","Coração","Cérebro","Pulmão"],c:2},
-"pele":{title:"Desafio Pele",key:"PELE",q:"Qual é o maior órgão do corpo humano?",a:["Fígado","Pele","Pulmão","Intestino"],c:1},
-"higgs":{title:"DESAFIO FINAL",key:"",q:"Qual destas afirmações sobre um elétron é correta?",a:["Ele gira como um planeta","Sua posição exata sempre pode ser conhecida","Podemos prever exatamente sua trajetória","Sua posição é descrita por uma distribuição de probabilidade"],c:3}
-};
-const sequence=[
- {slug:"atomo",file:"atomo.html"},
- {slug:"foton",file:"foton.html"},
- {slug:"genoma",file:"genoma.html"},
- {slug:"quasar",file:"quasar.html"},
- {slug:"cerebro",file:"cerebro.html"},
- {slug:"pele",file:"pele.html"},
- {slug:"higgs",file:"higgs.html"}
-];
-const urlParams=new URLSearchParams(location.search);
-const step=Number(urlParams.get("stage")||"1");
-const slug=location.pathname.split("/").pop().replace(".html","");
-const seqIndex=sequence.findIndex(item=>item.slug===slug);
-if(seqIndex===-1){document.body.innerHTML='<h2>Sequência inválida.</h2>';throw new Error();}
-const current=sequence[seqIndex];
-const nextEntry=sequence[seqIndex+1]||null;
-const nextLabel=nextEntry ? (nextEntry.slug==="higgs" ? "DESAFIO FINAL" : nextEntry.slug.toUpperCase()) : "";
-const nextKey=nextEntry ? (db[nextEntry.slug]?.key || nextLabel) : "";
-const d=db[slug];
-if(!d){document.body.innerHTML='<h2>Página não encontrada.</h2>';throw new Error();}
+const config={
+ title:"Desafio Genoma",
+ question:"O que e o genoma de um organismo?",
+ answers:["O conjunto completo do seu material genetico.","Apenas os genes responsaveis pela cor dos olhos.","As proteinas produzidas pelas celulas.","O nucleo de todas as celulas."],
+ correctIndex:0,
+ nextHref:"quasar.html",
+ keyword:"QUASAR",
+ finalMessage:"Missao concluida! Desafio 3: 6A A, 6A B, 6A C e <strong>7A A</strong>. O QR do proximo desafio esta em <strong>7A A</strong>. Para participar do proximo desafio, fale a palavra-chave: <strong>genoma</strong>."};
 const gameScreen=document.getElementById("gameScreen");
 const finalScreen=document.getElementById("finalScreen");
 const nextBtn=document.getElementById("nextBtn");
@@ -158,11 +130,11 @@ const radius=52;
 const circumference=2*Math.PI*radius;
 ring.style.strokeDasharray = circumference;
 function setUp(){
- titleEl.textContent=d.title;
- questionEl.textContent=d.q;
+ titleEl.textContent=config.title;
+ questionEl.textContent=config.question;
  answersEl.innerHTML="";
  resultEl.innerHTML="";
- d.a.forEach((answer,i)=>{
+ config.answers.forEach((answer,i)=>{
  const button=document.createElement("button");
  button.className="answer-btn";
  const letter = String.fromCharCode(65 + i);
@@ -197,7 +169,7 @@ function startGame(){
  updateProgress(timeLeft);
  if(timeLeft<=0){
  clearInterval(timerInterval);
- endRun(false,"⏰ Tempo esgotado!",false);
+ endRun(false,"â° Tempo esgotado!",false);
  }
  },1000);
 }
@@ -205,13 +177,13 @@ function handleAnswer(index,button){
  if(locked) return;
  locked=true;
  clearInterval(timerInterval);
- const correct=index===d.c;
+ const correct=index===config.correctIndex;
  if(correct){
  button.classList.add("correct");
- endRun(true,`✅ Correto!`,true);
+ endRun(true,"âœ… Correto!",true);
  } else {
  button.classList.add("wrong");
- endRun(false,`❌ Resposta incorreta.`,false);
+ endRun(false,"âŒ Resposta incorreta.",false);
  }
 }
 function playTone(frequency,duration,type="sine"){ 
@@ -238,31 +210,15 @@ function playFail(){
 }
 function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
- finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
- if(success && nextEntry){
- finalMessage.innerHTML = "Missão concluída! Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>genoma</strong>.";
- } else if(success){
- finalMessage.innerHTML = "Missão concluída! Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>. Para participar do próximo desafio, fale a palavra-chave: <strong>genoma</strong>.";
- } else {
- finalMessage.innerHTML = "Missão não foi concluída, mas vá para essas salas: Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>. A feira tem muitas coisas legais para ver, aproveite!";
- }
- if(success && nextKey){
- finalKeyword.textContent=nextLabel;
- finalKeyword.classList.remove("hidden");
- } else {
- finalKeyword.classList.add("hidden");
- }
+ finalTitle.textContent=success ? "MissÃ£o concluÃ­da" : "NÃ£o foi dessa vez";
  if(success){
- nextBtn.style.display = "none";
- } else if(nextEntry){
- nextBtn.style.display = "inline-flex";
- nextBtn.textContent = "Continuar";
- nextBtn.onclick = ()=>{ location.href = nextEntry.file; };
+ finalMessage.innerHTML = config.finalMessage;
  } else {
- nextBtn.style.display = "inline-flex";
- nextBtn.textContent = "Voltar ao início";
- nextBtn.onclick = ()=>{ location.href = `atomo.html`; };
+ finalMessage.innerHTML = "Missao nao foi concluida, mas va para essas salas: Desafio 3: 6A A, 6A B, 6A C e <strong>7A A</strong>. O QR do proximo desafio esta em <strong>7A A</strong>. A feira tem muitas coisas legais para ver, aproveite!";
  }
+ finalKeyword.textContent = config.keyword;
+ finalKeyword.classList.remove("hidden");
+ nextBtn.style.display = "none";
  finalScreen.classList.remove("hidden");
  gameScreen.classList.add("hidden");
  if(success){ playSuccess(); launchConfetti(); } else { playFail(); }
@@ -315,3 +271,4 @@ startGame();
 </script>
 </body>
 </html>
+

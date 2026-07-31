@@ -1,145 +1,274 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Desafio Modelo 2</title>
+<title>Desafio SÃªneca</title>
 <style>
-:root{color-scheme:dark}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100vh;
-  padding:24px;
-  display:grid;
-  place-items:center;
-  font-family:Inter,Arial,sans-serif;
-  color:#e8ecff;
-  background:#050814;
-  position:relative;
-  overflow-x:hidden;
-  overflow-y:auto;
-  touch-action:pan-y;
-  -webkit-overflow-scrolling:touch;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(92,100,255,.16),transparent 22%),
-    radial-gradient(circle at 80% 18%,rgba(53,198,255,.12),transparent 18%),
-    linear-gradient(180deg,#050814,#06091d);
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    radial-gradient(circle,#fff 1.5px,transparent 2.5px),
-    radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),
-    radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);
-  background-size:105px 105px,165px 165px,340px 340px;
-  opacity:.82;
-  filter:drop-shadow(0 0 5px rgba(190,220,255,.7));
-  z-index:-1;
-  animation:twinkle 5s ease-in-out infinite alternate;
-}
-@keyframes twinkle{from{opacity:.55}to{opacity:1}}
-.card{
-  width:min(100%,720px);
-  padding:40px;
-  border-radius:32px;
-  border:1px solid rgba(123,114,255,.22);
-  background:rgba(10,16,38,.94);
-  box-shadow:0 30px 120px rgba(68,53,179,.2);
-}
-h1{margin:0 0 12px;color:#b6abff;font-size:clamp(2rem,5vw,3rem)}
-p{line-height:1.7;color:#d7daff}
-.timer{
-  display:inline-flex;
-  min-width:52px;
-  justify-content:center;
-  margin:0 0 22px;
-  padding:10px 14px;
-  border-radius:999px;
-  background:rgba(143,131,255,.2);
-  font-size:1.2rem;
-  font-weight:800;
-}
-.answers{display:grid;gap:12px;margin-top:24px}
-.answer{
-  padding:16px;
-  border:0;
-  border-radius:16px;
-  background:rgba(31,40,75,.9);
-  color:#edf0ff;
-  text-align:left;
-  font:inherit;
-  cursor:pointer;
-}
-.answer:hover{background:rgba(56,78,150,.95)}
-.result{margin-top:22px;padding:16px;border-radius:16px;line-height:1.6}
-.success{background:rgba(46,70,143,.92)}
-.fail{background:rgba(92,32,36,.92)}
-.hidden{display:none}
-@media(max-width:600px){
-  body{padding:14px;place-items:start center;overflow-y:auto}
-  .card{padding:24px 18px;border-radius:24px;margin:auto 0}
-  h1{font-size:1.75rem}
-  .answer{padding:15px 14px;font-size:.95rem}
-}
+:root{color-scheme: dark;}
+*{box-sizing:border-box;}
+body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;background:#050814;color:#e8ecff;display:flex;align-items:center;justify-content:center;overflow-x:hidden;overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch;position:relative;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(92,100,255,.16),transparent 22%),radial-gradient(circle at 80% 18%,rgba(53,198,255,.12),transparent 18%),linear-gradient(180deg,#050814 0%,#06091d 100%);pointer-events:none;z-index:-2;}
+body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,1) 1.5px,transparent 2.5px),radial-gradient(circle,rgba(170,213,255,.9) 1px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.6) 1px,transparent 1.8px),radial-gradient(circle,rgba(151,135,255,.45) 1px,transparent 2px);background-size:105px 105px,165px 165px,245px 245px,340px 340px;background-position:10% 10%,40% 35%,80% 70%,22% 72%;opacity:.82;pointer-events:none;mix-blend-mode:screen;filter:drop-shadow(0 0 5px rgba(190,220,255,.7));animation:starDrift 80s linear infinite,starTwinkle 5s ease-in-out infinite alternate;z-index:-1;}
+@keyframes starDrift{from{transform:translate(0,0);}to{transform:translate(-50px,50px);}}
+@keyframes starTwinkle{from{opacity:.55;filter:drop-shadow(0 0 2px rgba(190,220,255,.35));}to{opacity:1;filter:drop-shadow(0 0 8px rgba(210,230,255,.95));}}
+.screen{width:100%;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.hidden{display:none !important;}
+#brandLogo{position:fixed;top:18px;left:18px;z-index:12;width:auto;display:flex;align-items:center;pointer-events:none;}
+#brandLogo img{width:92px;height:auto;flex-shrink:0;object-fit:contain;border-radius:8px;}
+.hero{width:min(100%,720px);padding:40px;border-radius:32px;border:1px solid rgba(123,114,255,.18);background:rgba(10,16,38,.95);box-shadow:0 30px 120px rgba(68,53,179,.18);backdrop-filter:blur(12px);}
+.hero h1{font-size:clamp(2.4rem,4vw,3.6rem);margin:0 0 16px;letter-spacing:.04em;text-transform:uppercase;color:#b6abff;}
+.hero p{margin:0 0 24px;font-size:1.05rem;line-height:1.75;color:#cbd0ff;}
+.welcome-list{margin:0 0 28px;padding-left:1.25rem;color:#d7daff;}
+.welcome-list li{margin:10px 0;}
+.welcome-list li::marker{color:#8f83ff;}
+.button-primary{display:inline-flex;align-items:center;justify-content:center;padding:16px 28px;border:none;border-radius:999px;background:linear-gradient(135deg,#8f83ff,#358aff);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;}
+.button-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(56,113,255,.24);}
+.game-shell{width:min(100%,840px);max-width:960px;padding:24px;display:grid;grid-template-columns:1fr;gap:20px;}
+.hud{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;}
+.progress-bar{flex:1 1 100%;height:16px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;}
+#progressFill{width:100%;height:100%;background:linear-gradient(90deg,#786fff,#30c1ff);transition:width .3s ease;}
+.timer-ring{position:relative;width:120px;height:120px;}
+.timer-ring svg{transform:rotate(-90deg);width:100%;height:100%;}
+.timer-ring circle{fill:none;stroke-width:10;stroke-linecap:round;}
+.timer-ring .bg{stroke:rgba(255,255,255,.08);}
+.timer-ring .progress{stroke:url(#ringGradient);stroke-dasharray:326.73;stroke-dashoffset:0;transition:stroke-dashoffset .3s ease,stroke .3s ease;filter:drop-shadow(0 0 20px rgba(121,106,255,.45));}
+.timer-value{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;}
+.card{width:100%;min-height:360px;padding:32px;border-radius:28px;border:1px solid rgba(123,114,255,.18);background:linear-gradient(180deg,rgba(12,18,45,.98),rgba(10,14,32,.96));box-shadow:0 40px 120px rgba(8,13,34,.45);backdrop-filter:blur(8px);}
+.card h1{margin:0 0 18px;font-size:2rem;color:#d8d6ff;text-transform:uppercase;letter-spacing:.08em;}
+.card p{margin:0 0 24px;font-size:1rem;line-height:1.75;color:#d7daff;}
+#answers{display:grid;gap:14px;}
+.answer-btn{width:100%;padding:16px 18px;border:none;border-radius:18px;background:rgba(31,40,75,.85);color:#edf0ff;font-size:1rem;cursor:pointer;text-align:left;transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}
+.answer-btn:hover{transform:translateY(-1px);background:rgba(56,78,150,.95);box-shadow:0 15px 35px rgba(56,78,150,.18);}
+.answer-btn.correct{border:1px solid #7DFED8;}
+.answer-btn.wrong{border:1px solid #ff7b7b;}
+#result{min-height:72px;margin-top:18px;font-size:1.05rem;line-height:1.6;}
+.result-card{padding:18px 20px;border-radius:22px;background:rgba(9,14,30,.92);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);animation:fadeIn .45s ease both;}
+.result-card.success{background:rgba(46,70,143,.92);}
+.result-card.fail{background:rgba(92,32,36,.92);}
+.result-key{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.08);color:#b9d7ff;font-weight:700;letter-spacing:.08em;animation:pop 0.7s ease both;}
+#finalScreen{position:fixed;inset:0;padding:24px;background:rgba(4,8,22,.88);backdrop-filter:blur(12px);z-index:10;}#finalScreen.hidden{display:none !important;}#finalScreen:not(.hidden){display:flex;align-items:center;justify-content:center;}
+.final-card{width:min(100%,720px);padding:36px;border-radius:32px;border:1px solid rgba(120,110,255,.2);background:rgba(8,13,32,.98);box-shadow:0 35px 90px rgba(43,44,90,.28);text-align:center;}
+.final-card h2{margin:0 0 12px;font-size:2.4rem;color:#f5f7ff;}
+.final-card p{margin:0 0 22px;font-size:1.05rem;line-height:1.8;color:#d0d6ff;}
+.final-keyword{display:inline-flex;padding:14px 20px;border-radius:18px;background:linear-gradient(135deg,#8a7bff,#45c1ff);color:#fff;font-weight:800;font-size:1.1rem;letter-spacing:.08em;}
+.final-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:24px;}
+.action-btn{padding:14px 22px;border:none;border-radius:999px;background:linear-gradient(135deg,#4c6dff,#5af0ff);color:#050b1f;font-weight:700;cursor:pointer;transition:transform .2s ease;}
+.action-btn:hover{transform:translateY(-2px);}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:11;opacity:0;transition:opacity .25s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.06);opacity:1}100%{transform:scale(1);}}
+@media (max-width:600px){body{display:block;overflow-x:hidden;overflow-y:auto;align-items:stretch;justify-content:flex-start}.screen{position:relative;inset:auto;min-height:100svh;padding:14px 10px}.game-shell{padding:12px;gap:14px}.hud{gap:10px}.timer-ring{width:88px;height:88px}.card{min-height:0;padding:22px 18px;border-radius:22px}.card h1{font-size:1.55rem;letter-spacing:.04em}.card p{font-size:.98rem;line-height:1.55}.answer-btn{padding:15px 14px;font-size:.96rem}.final-card{padding:26px 18px;border-radius:24px}.final-card h2{font-size:1.85rem}.final-card p{font-size:1rem;line-height:1.6}#brandLogo{top:10px;left:10px;width:auto}#brandLogo img{width:62px}}
 </style>
 </head>
 <body>
-<main class="card">
-  <h1>Desafio Modelo 2</h1>
-  <div class="timer" id="timer">15</div>
-  <p>Qual e o maior orgao do corpo humano?</p>
-  <div class="answers" id="answers">
-    <button class="answer" data-correct="false">A) Figado</button>
-    <button class="answer" data-correct="true">B) Pele</button>
-    <button class="answer" data-correct="false">C) Pulmao</button>
-    <button class="answer" data-correct="false">D) Intestino</button>
-  </div>
-  <div class="result hidden" id="result"></div>
-</main>
+<div id="brandLogo">
+ <img src="logo.png" alt="SÃªneca">
+</div>
+<div class="screen" id="gameScreen">
+ <div class="game-shell">
+ <div class="hud">
+ <div class="progress-bar"><div id="progressFill"></div></div>
+ <div class="timer-ring">
+ <svg viewBox="0 0 120 120">
+ <defs><linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8f83ff"/><stop offset="100%" stop-color="#30c1ff"/></linearGradient></defs>
+ <circle class="bg" cx="60" cy="60" r="52"></circle>
+ <circle class="progress" cx="60" cy="60" r="52" id="ring"></circle>
+ </svg>
+ <div class="timer-value" id="timerValue">15</div>
+ </div>
+ </div>
+ <div class="card">
+ <h1 id="title"></h1>
+ <p id="question"></p>
+ <div id="answers"></div>
+ <div id="result"></div>
+ </div>
+ </div>
+</div>
+<div class="screen hidden" id="finalScreen">
+ <div class="final-card">
+ <h2 id="finalTitle"></h2>
+ <p id="finalMessage"></p>
+ <div id="finalKeyword" class="final-keyword hidden"></div>
+ <div class="final-actions">
+ <button class="action-btn" id="nextBtn">PrÃ³ximo</button>
+ </div>
+ </div>
+</div>
+<canvas id="confetti"></canvas>
 <script>
-const timer=document.getElementById('timer');
-const answers=document.getElementById('answers');
-const result=document.getElementById('result');
-let seconds=15;
+const config={
+ title:"Desafio Pele",
+ question:"A pele e formada por tres camadas principais. Qual delas e a mais externa?",
+ answers:["Hipoderme","Derme","Epiderme","Endoderme"],
+ correctIndex:2,
+ nextHref:"higgs.html",
+ keyword:"HIGGS",
+ finalMessage:"Correto! Visite as ultimas salas: <strong>3A ano, 4A ano e 5A ano</strong>. O QR do desafio final esta la. Para desbloquear o proximo desafio, fale a palavra <strong>HIGGS</strong>."};
+const gameScreen=document.getElementById("gameScreen");
+const finalScreen=document.getElementById("finalScreen");
+const nextBtn=document.getElementById("nextBtn");
+const titleEl=document.getElementById("title");
+const questionEl=document.getElementById("question");
+const answersEl=document.getElementById("answers");
+const resultEl=document.getElementById("result");
+const timerValue=document.getElementById("timerValue");
+const ring=document.getElementById("ring");
+const progressFill=document.getElementById("progressFill");
+const finalTitle=document.getElementById("finalTitle");
+const finalMessage=document.getElementById("finalMessage");
+const finalKeyword=document.getElementById("finalKeyword");
+const confettiCanvas=document.getElementById("confetti");
+const ctx=confettiCanvas.getContext("2d");
+let audioCtx=null;
+const totalTime=15;
+let timeLeft=totalTime;
 let locked=false;
-
-const clock=setInterval(()=>{
-  if(locked) return;
-  seconds--;
-  timer.textContent=seconds;
-  if(seconds<=0){
-    finish(false,'Tempo esgotado! Nao foi dessa vez, mas visite as salas 8o B, 9o ano e 2o ano para continuar sua investigacao.');
-  }
-},1000);
-
-function finish(success,message){
-  if(locked) return;
-  locked=true;
-  clearInterval(clock);
-  answers.querySelectorAll('button').forEach(button=>button.disabled=true);
-  result.textContent=message;
-  result.className=`result ${success?'success':'fail'}`;
+let timerInterval=null;
+const radius=52;
+const circumference=2*Math.PI*radius;
+ring.style.strokeDasharray = circumference;
+function setUp(){
+ titleEl.textContent=config.title;
+ questionEl.textContent=config.question;
+ answersEl.innerHTML="";
+ resultEl.innerHTML="";
+ config.answers.forEach((answer,i)=>{
+ const button=document.createElement("button");
+ button.className="answer-btn";
+ const letter = String.fromCharCode(65 + i);
+ button.textContent = `${letter}) ${answer}`;
+ button.addEventListener("click",()=>handleAnswer(i,button));
+ answersEl.appendChild(button);
+ });
+ updateTimerDisplay(totalTime);
+ updateProgress(totalTime);
 }
-
-answers.addEventListener('click',event=>{
-  const button=event.target.closest('button');
-  if(!button||locked) return;
-  finish(
-    button.dataset.correct==='true',
-    button.dataset.correct==='true'
-      ? 'Correto! Visite a proxima sala: HIGGS. Para desbloquear o proximo desafio, fale a palavra HIGGS.'
-      : 'Nao foi dessa vez, mas visite as salas 8o B, 9o ano e 2o ano para continuar sua investigacao.'
-  );
-});
+function updateTimerDisplay(value){
+ timerValue.textContent=value;
+ const offset=circumference - (value / totalTime) * circumference;
+ ring.style.strokeDashoffset=offset;
+}
+function updateProgress(value){
+ const percent=(value/totalTime)*100;
+ progressFill.style.width=`${percent}%`;
+}
+function startGame(){
+ gameScreen.classList.remove("hidden");
+ finalScreen.classList.add("hidden");
+ setUp();
+ locked=false;
+ timeLeft=totalTime;
+ updateTimerDisplay(timeLeft);
+ updateProgress(timeLeft);
+ timerInterval = setInterval(()=>{
+ if(locked) return;
+ timeLeft--;
+ updateTimerDisplay(timeLeft);
+ updateProgress(timeLeft);
+ if(timeLeft<=0){
+ clearInterval(timerInterval);
+ endRun(false,"â° Tempo esgotado!",false);
+ }
+ },1000);
+}
+function handleAnswer(index,button){
+ if(locked) return;
+ locked=true;
+ clearInterval(timerInterval);
+ const correct=index===config.correctIndex;
+ if(correct){
+ button.classList.add("correct");
+ endRun(true,"âœ… Correto!",true);
+ } else {
+ button.classList.add("wrong");
+ endRun(false,"âŒ Resposta incorreta.",false);
+ }
+}
+function playTone(frequency,duration,type="sine"){ 
+ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+ const osc=audioCtx.createOscillator();
+ const gain=audioCtx.createGain();
+ osc.type=type;
+ osc.frequency.value=frequency;
+ gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.18,audioCtx.currentTime+0.02);
+ gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);
+ osc.connect(gain);
+ gain.connect(audioCtx.destination);
+ osc.start(audioCtx.currentTime);
+ osc.stop(audioCtx.currentTime+duration+0.02);
+}
+function playSuccess(){
+ playTone(560,0.16,"triangle");
+ setTimeout(()=>playTone(760,0.24,"triangle"),120);
+}
+function playFail(){
+ playTone(180,0.18,"sawtooth");
+ setTimeout(()=>playTone(120,0.22,"sawtooth"),120);
+}
+function endRun(success,message,showAnswer){
+ resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
+ finalTitle.textContent=success ? "MissÃ£o concluÃ­da" : "NÃ£o foi dessa vez";
+ if(success){
+ finalMessage.innerHTML = config.finalMessage;
+ } else {
+ finalMessage.innerHTML = "Nao foi dessa vez, mas visite as salas <strong>8A B, 9A ano e 2A ano</strong> para continuar sua investigacao.";
+ }
+ finalKeyword.textContent = config.keyword;
+ finalKeyword.classList.remove("hidden");
+ nextBtn.style.display = "none";
+ finalScreen.classList.remove("hidden");
+ gameScreen.classList.add("hidden");
+ if(success){ playSuccess(); launchConfetti(); } else { playFail(); }
+}
+function resizeCanvas(){
+ confettiCanvas.width = window.innerWidth;
+ confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+function launchConfetti(){
+ const pieces=[];
+ const colors=["#8f83ff","#48cfff","#ff9efe","#8bf4af","#ffe37d"];
+ const count=120;
+ for(let i=0;i<count;i++){
+ pieces.push({
+ x:Math.random()*confettiCanvas.width,
+ y:Math.random()*confettiCanvas.height-40,
+ size:Math.random()*8+6,
+ speed:Math.random()*2+2,
+ rotate:Math.random()*360,
+ rotationSpeed:(Math.random()-.5)*10,
+ color:colors[Math.floor(Math.random()*colors.length)],
+ tilt:Math.random()*0.8-0.4
+ });
+ }
+ let elapsed=0;
+ confettiCanvas.style.opacity="1";
+ const animation = () => {
+ ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+ pieces.forEach(p=>{
+ p.y += p.speed;
+ p.x += Math.sin(p.y*0.02)*1.8;
+ p.rotate += p.rotationSpeed;
+ const width = p.size * 1.8;
+ ctx.save();
+ ctx.translate(p.x,p.y);
+ ctx.rotate(p.rotate*Math.PI/180);
+ ctx.fillStyle=p.color;
+ ctx.fillRect(-width/2, -p.size/2, width, p.size);
+ ctx.restore();
+ if(p.y > confettiCanvas.height + 30){ p.y = -20; }
+ });
+ elapsed += 16;
+ if(elapsed < 1800){ requestAnimationFrame(animation); } else { confettiCanvas.style.opacity="0"; ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); }
+ };
+ animation();
+}
+startGame();
 </script>
 </body>
 </html>
+
