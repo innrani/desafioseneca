@@ -238,9 +238,9 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong>${showAnswer && !success ? `<div style="margin-top:12px;color:#d7d8ff;">Resposta correta: <span style="font-weight:700;color:#fff;">${d.a[d.c]}</span></div>` : ""}</div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.textContent = `Você desbloqueou a palavra-chave do próximo desafio (${nextLabel}).`;
+ finalMessage.textContent = `✅ Correto! A palavra-chave é ${nextKey}. Você pode seguir para a próxima sala e continuar sua jornada científica.`;
  } else if(success){
- finalMessage.textContent = "Você venceu este teste com estilo.";
+ finalMessage.textContent = "✅ Correto! Você concluiu esta etapa e pode seguir explorando as outras salas do desafio.";
  } else {
  finalMessage.textContent = "Não foi dessa vez, mas visite estas salas para continuar sua investigação: 6º B, 6º C e 7º A (Módulo II).";
  }
