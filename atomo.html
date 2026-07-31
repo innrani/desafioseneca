@@ -112,7 +112,7 @@ const config={
  correctIndex:1,
  nextHref:"foton.html",
  keyword:"FÓTON",
- finalMessage:"Visite a próxima sala: FÓTON. Para desbloquear o próximo desafio, fale a palavra FÓTON."
+ finalMessage:"Desafio 1: Química 1ª, Química 2ª, Física 1ª e <strong>Física 2ª</strong>. O QR do próximo desafio está em <strong>Física 2ª</strong>."
 };
 const gameScreen=document.getElementById("gameScreen");
 const finalScreen=document.getElementById("finalScreen");
@@ -220,9 +220,9 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success){
- finalMessage.textContent = config.finalMessage;
+ finalMessage.innerHTML = config.finalMessage;
  } else {
- finalMessage.textContent = "Não foi dessa vez, mas visite estas salas para continuar sua investigação: Química 2º, Química 1º e Física 1ª (Módulo 3).";
+ finalMessage.innerHTML = "Desafio 1: Química 1ª, Química 2ª, Física 1ª e <strong>Física 2ª</strong>. O QR do próximo desafio está em <strong>Física 2ª</strong>.";
  }
  finalKeyword.textContent = config.keyword;
  finalKeyword.classList.remove("hidden");

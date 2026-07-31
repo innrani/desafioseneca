@@ -240,11 +240,11 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.textContent = `✅ Correto! A palavra-chave é ${nextKey}. Você pode seguir para a próxima sala e continuar sua jornada científica.`;
+ finalMessage.innerHTML = "Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>.";
  } else if(success){
- finalMessage.textContent = "✅ Correto! Você concluiu esta etapa e pode seguir explorando as outras salas do desafio.";
+ finalMessage.innerHTML = "Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>.";
  } else {
- finalMessage.textContent = "Não foi dessa vez, mas visite estas salas para continuar sua investigação: Química 2ª Série (Pátio do Módulo 3), Física 2ª Série e 6º A (Módulo II térreo).";
+ finalMessage.innerHTML = "Desafio 3: 6º A, 6º B, 6º C e <strong>7º A</strong>. O QR do próximo desafio está em <strong>7º A</strong>.";
  }
  if(success && nextKey){
  finalKeyword.textContent=nextLabel;

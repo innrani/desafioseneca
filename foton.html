@@ -240,11 +240,11 @@ function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
  finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success && nextEntry){
- finalMessage.textContent = `✅ Correto! A palavra-chave é ${nextKey}. Você pode seguir para a próxima sala e continuar sua jornada científica.`;
+ finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
  } else if(success){
- finalMessage.textContent = "✅ Correto! Você concluiu esta etapa e pode seguir explorando as outras salas do desafio.";
+ finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
  } else {
- finalMessage.textContent = "Não foi dessa vez, mas visite estas salas para continuar sua investigação: Física 2ª (Módulo 3), Biologia 1ª (Módulo 3) e Biologia 2ª (Módulo 3).";
+ finalMessage.innerHTML = "Desafio 2: Biologia 1ª, Biologia 2ª, Química 2ª Série e <strong>Física 2ª série</strong>. O QR do próximo desafio está em <strong>Física 2ª série</strong>.";
  }
  if(success && nextKey){
  finalKeyword.textContent=nextLabel;

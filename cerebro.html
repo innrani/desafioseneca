@@ -126,7 +126,7 @@ function finish(success,message){
   locked=true;
   clearInterval(clock);
   answers.querySelectorAll('button').forEach(button=>button.disabled=true);
-  result.textContent=message;
+  result.innerHTML=message;
   result.className=`result ${success?'success':'fail'}`;
 }
 
@@ -136,8 +136,8 @@ answers.addEventListener('click',event=>{
   finish(
     button.dataset.correct==='true',
     button.dataset.correct==='true'
-      ? 'Correto! A palavra-chave e PELE. Voce pode seguir para a proxima sala e continuar sua jornada cientifica.'
-      : 'Nao foi dessa vez, mas visite as salas 7o B, 7o C e 8o A para continuar sua investigacao.'
+      ? 'Desafio 5: 9º A, 9º B e <strong>2º ano</strong>. O QR do próximo desafio está em <strong>2º ano</strong>.'
+      : 'Desafio 5: 9º A, 9º B e <strong>2º ano</strong>. O QR do próximo desafio está em <strong>2º ano</strong>.'
   );
 });
 </script>
