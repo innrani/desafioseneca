@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Desafio SÃªneca</title>
+<title>Desafio Sêneca</title>
 <style>
 :root{color-scheme: dark;}
 *{box-sizing:border-box;}
@@ -63,7 +63,7 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
 </head>
 <body>
 <div id="brandLogo">
- <img src="logo.png" alt="SÃªneca">
+ <img src="logo.png" alt="Sêneca">
 </div>
 <div class="screen" id="gameScreen">
  <div class="game-shell">
@@ -92,7 +92,7 @@ body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(c
  <p id="finalMessage"></p>
  <div id="finalKeyword" class="final-keyword hidden"></div>
  <div class="final-actions">
- <button class="action-btn" id="nextBtn">PrÃ³ximo</button>
+ <button class="action-btn" id="nextBtn">Próximo</button>
  </div>
  </div>
 </div>
@@ -169,7 +169,7 @@ function startGame(){
  updateProgress(timeLeft);
  if(timeLeft<=0){
  clearInterval(timerInterval);
- endRun(false,"â° Tempo esgotado!",false);
+ endRun(false,"⏰ Tempo esgotado!",false);
  }
  },1000);
 }
@@ -180,10 +180,10 @@ function handleAnswer(index,button){
  const correct=index===config.correctIndex;
  if(correct){
  button.classList.add("correct");
- endRun(true,"âœ… Correto!",true);
+ endRun(true,"✅ Correto!",true);
  } else {
  button.classList.add("wrong");
- endRun(false,"âŒ Resposta incorreta.",false);
+ endRun(false,"❌ Resposta incorreta.",false);
  }
 }
 function playTone(frequency,duration,type="sine"){ 
@@ -210,7 +210,7 @@ function playFail(){
 }
 function endRun(success,message,showAnswer){
  resultEl.innerHTML=`<div class="result-card ${success?"success":"fail"}"><strong>${message}</strong></div>`;
- finalTitle.textContent=success ? "MissÃ£o concluÃ­da" : "NÃ£o foi dessa vez";
+ finalTitle.textContent=success ? "Missão concluída" : "Não foi dessa vez";
  if(success){
  finalMessage.innerHTML = config.finalMessage;
  } else {
